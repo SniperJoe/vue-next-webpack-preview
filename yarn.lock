@@ -4074,10 +4074,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-i18n@^9.0.0-alpha.0:
-  version "9.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-9.0.0-alpha.0.tgz#5ffaa6d83b514c7318986648e88a122dc0c393ab"
-  integrity sha512-wuxfYxYa2Lu0iss5CsFNXlvr3hdDzXxr+FpB9HPxpMJLhNPLGu7Y83AfMIsck8XTi7WwVh4TslDXmsV2x9LOug==
+vue-i18n@^9.0.0-alpha.1:
+  version "9.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-9.0.0-alpha.1.tgz#43bad03c2c122238ad81ced356d9ba4f38ea6887"
+  integrity sha512-iNpFIR8Yn0fLnwjkaQjxa7Xa2d9vdKranOHz138faig+NfHNx6xQy8/O3SWz4nN4LP3cJvpuS0B/7Yc+xQ0a9w==
   dependencies:
     vue "^3.0.0-alpha.10"
 
