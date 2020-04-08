@@ -5,9 +5,11 @@
     "build": "webpack --env.prod"
   },
   "dependencies": {
-    "vue": "^3.0.0-alpha.10"
+    "vue": "^3.0.0-alpha.10",
+    "vue-i18n": "^9.0.0-alpha.0"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-loader": "^2.0.0-alpha.0",
     "@vue/compiler-sfc": "^3.0.0-alpha.10",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
