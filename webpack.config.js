@@ -45,7 +45,14 @@ module.exports = (env = {}) => ({
       {
         resourceQuery: /blockType=i18n/,
         type: 'javascript/auto',
-        loader: '@intlify/vue-i18n-loader'
+        use: [
+          {
+            loader: '@intlify/vue-i18n-loader',
+            options: {
+              preCompile: true
+            }
+          }
+        ]
       }
     ]
   },

@@ -17,7 +17,7 @@ import { useI18n } from 'vue-i18n'
 
 export default {
   setup() {
-    const { t, locale } = useI18n({})
+    const { t, locale } = useI18n({ locale: 'ja' })
     const count = ref(0)
     const inc = () => {
       count.value++
