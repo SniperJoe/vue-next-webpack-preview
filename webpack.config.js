@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = (env = {}) => ({
   mode: env.prod ? 'production' : 'development',
   devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: path.resolve(__dirname, './src/main.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -43,16 +44,26 @@ module.exports = (env = {}) => ({
         ]
       },
       {
-        resourceQuery: /blockType=i18n/,
+        test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
         type: 'javascript/auto',
+        // Use `Rule.include` to specify the files of locale messages to be pre-compiled
+        include: [
+          path.resolve(__dirname, './src/locales')
+        ],
         use: [
           {
-            loader: '@intlify/vue-i18n-loader',
+            loader: path.resolve(__dirname, '../lib/index.js'),
             options: {
-              preCompile: true
+              // Whether pre-compile number and boolean literal as message functions that return the string value, default `false`
+              // forceStringify: true
             }
           }
         ]
+      },
+      {
+        resourceQuery: /blockType=i18n/,
+        type: 'javascript/auto',
+        loader: '@intlify/vue-i18n-loader'
       }
     ]
   },
