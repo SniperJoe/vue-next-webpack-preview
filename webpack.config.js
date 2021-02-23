@@ -50,15 +50,6 @@ module.exports = (env = {}) => ({
         // Use `Rule.include` to specify the files of locale messages to be pre-compiled
         include: [
           path.resolve(__dirname, './src/locales')
-        ],
-        use: [
-          {
-            loader: path.resolve(__dirname, '../lib/index.js'),
-            options: {
-              // Whether pre-compile number and boolean literal as message functions that return the string value, default `false`
-              // forceStringify: true
-            }
-          }
         ]
       },
       {
