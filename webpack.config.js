@@ -1,6 +1,7 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const IntlifyVuePlugin = require('@intlify/vue-i18n-loader/lib/plugin').default
 
 module.exports = (env = {}) => ({
   mode: env.prod ? 'production' : 'development',
@@ -61,9 +62,14 @@ module.exports = (env = {}) => ({
   },
   plugins: [
     new VueLoaderPlugin(),
+    new IntlifyVuePlugin({
+      __INTLIFY__DEBUG__: (dep) => {
+        return 'intlify-debug'
+      }
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    })
+    }),
   ],
   devServer: {
     inline: true,
