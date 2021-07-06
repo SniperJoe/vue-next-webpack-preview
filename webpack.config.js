@@ -19,7 +19,7 @@ module.exports = (env = {}) => ({
       // extra re-export somehow causes webpack to always invalidate the module
       // on the first HMR update and causes the page to reload.
       'vue': '@vue/runtime-dom',
-      'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
+      'vue-i18n$': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
     }
   },
   module: {
@@ -38,10 +38,7 @@ module.exports = (env = {}) => ({
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: { hmr: !env.prod }
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
