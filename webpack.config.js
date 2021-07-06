@@ -47,6 +47,7 @@ module.exports = (env = {}) => ({
       },
       {
         test: /\.(json5?|ya?ml)$/, // target json, json5, yaml and yml files
+        loader: '@intlify/vue-i18n-loader',
         type: 'javascript/auto',
         // Use `Rule.include` to specify the files of locale messages to be pre-compiled
         include: [
