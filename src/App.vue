@@ -1,5 +1,4 @@
 <template>
-  <img src="./logo.png">
   <form>
     <label>{{ t('language') }}</label>
     <select v-model="locale">
@@ -11,24 +10,20 @@
   <button @click="inc">{{ t('inc', { count }) }}</button>
 </template>
 
-<script>
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
 
-export default {
-  setup() {
-    const { t, locale } = useI18n({ locale: 'ja' })
-    const count = ref(0)
-    const inc = () => {
-      count.value++
-    }
+@Options({})
+export default class App extends Vue {
+  private count: number = 0;
+  private locale: string = 'ja';
 
-    return {
-      count,
-      inc,
-      t,
-      locale
-    }
+  private inc() {
+    this.count++;
+  }
+
+  private t(key: string, formatData: Record<string, unknown>) {
+    return this.$t ? this.$t(key, formatData) : '';
   }
 }
 </script>

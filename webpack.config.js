@@ -4,10 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const IntlifyVuePlugin = require('@intlify/vue-i18n-loader/lib/plugin').default
 
 module.exports = (env = {}) => ({
-  mode: env.prod ? 'production' : 'development',
+  mode: 'development',
   devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
   devtool: 'source-map',
-  entry: path.resolve(__dirname, './src/main.js'),
+  entry: path.resolve(__dirname, './src/main.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/'
@@ -20,27 +20,32 @@ module.exports = (env = {}) => ({
       // on the first HMR update and causes the page to reload.
       'vue': '@vue/runtime-dom',
       'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
-    }
+    },
+    extensions: ['.png', '.js', '.vue', '.ts']
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+            appendTsSuffixTo: [/\.vue$/],
+        }
+      },
       {
         test: /\.vue$/,
         use: 'vue-loader'
       },
       {
         test: /\.png$/,
-        use: {
-          loader: 'url-loader',
-          options: { limit: 8192 }
-        }
+        type: 'asset/inline'
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: { hmr: !env.prod }
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader'
         ]
@@ -73,10 +78,11 @@ module.exports = (env = {}) => ({
     }),
   ],
   devServer: {
-    inline: true,
     hot: true,
-    stats: 'minimal',
-    contentBase: __dirname,
-    overlay: true
-  }
+    static: __dirname,
+    client: {
+      overlay: true
+    }
+  },
+  stats: 'minimal'
 })
